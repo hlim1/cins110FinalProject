@@ -5,7 +5,7 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-div#header {
+div.header {
   height: 80px;
   width: 100%;
   margin: 0 auto;
@@ -17,7 +17,12 @@ div#main-body {
   color: white;
   padding: 25px;
 }
-div#footer {
+div#listPage-body {
+  background-image: url("http://combiboilersleeds.com/images/movie/movie-3.jpg");
+  color: white;
+  padding: 25px;
+}
+div.footer {
   height: 150px;
   width: 100%;
   margin-bottom: 0;   
@@ -26,7 +31,7 @@ div#footer {
 }
 
 /*Actual content styles*/
-#header > #main-title {
+.header > .main-title {
   margin: 0;
   margin-left: 15px;
   padding: 0;
@@ -34,23 +39,23 @@ div#footer {
   line-height: 80px;
   letter-spacing: 12px;
 }
-#main-body > #main-page-img {
+.main-body > #main-page-img {
   display: block; 
   margin-top: 0;
   margin-left: auto;
   margin-right: auto;
 }
-#main-body > #main-button {
+.main-body > #main-button {
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
   border: solid;
 }
-#main-body > #main-button:hover {
+.main-body > #main-button:hover {
   background-color: ;
   font-weight: bold;
 }
-#footer > #developer-info {
+.footer > .developer-info {
   color: white;
   left: 40%;
   top: 20%;
