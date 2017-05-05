@@ -1,1 +1,60 @@
 /*HeuiChan Lim*/
+
+/*Style for main structure: header, body, and footer*/
+* { margin: 0; padding: 0; }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+div#header {
+  height: 80px;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #292924;
+}
+div#main-body {
+  text-align: center;
+  background-image: url("http://combiboilersleeds.com/images/movie/movie-3.jpg");
+  color: white;
+  padding: 25px;
+}
+div#footer {
+  height: 150px;
+  width: 100%;
+  margin-bottom: 0;   
+  background-color: #292924;
+  position: relative;
+}
+
+/*Actual content styles*/
+#header > #main-title {
+  margin: 0;
+  margin-left: 15px;
+  padding: 0;
+  color: white;
+  line-height: 80px;
+  letter-spacing: 12px;
+}
+#main-body > #main-page-img {
+  display: block; 
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+#main-body > #main-button {
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: solid;
+}
+#main-body > #main-button:hover {
+  background-color: ;
+  font-weight: bold;
+}
+#footer > #developer-info {
+  color: white;
+  left: 40%;
+  top: 20%;
+  text-align: center;
+  vertical-align: middle;
+  position: absolute;
+}
