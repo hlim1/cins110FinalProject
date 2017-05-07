@@ -263,9 +263,23 @@ function viewResult() {
     document.getElementById("t").appendChild(actorlist);
     actorlist.innerHTML = movieInfo[i].actors[x];
   }
-  document.getElementByIv("releaseDate").innerHTML = movieInfo[i].releaseDate;
-  document.getElementByIv("moviePage").innerHTML = movieInfo[i].moviePage;
+  document.getElementById("releaseDate").innerHTML = movieInfo[i].releaseDate;
+  document.getElementById("moviePage").innerHTML = movieInfo[i].moviePage;
   console.log("working");
+}
+
+var current = "";
+function movieQuiz() {
+  var arraySize = movieInfo.length;
+  var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
+  var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
+  while (current == year)
+  {
+     rand = Math.floor(Math.random() * arraySize);
+  }
+  current = year;
+  document.getElementById("poster").src = movieInfo[rand].poster;
+  document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
 }
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp

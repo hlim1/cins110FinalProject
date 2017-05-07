@@ -41,7 +41,7 @@ div.footer {
   margin-left: auto;
   margin-right: auto;
 }
-.main-body > #main-button {
+.main-body > .main-button {
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
