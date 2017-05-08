@@ -11,10 +11,15 @@
     <div class="header">
       <h1 class="main-title">Movie Quiz</h1>
     </div>
-    <div id="main-body">
-      <img src="" id="poster" width="400px" height="600px" alt="No Poster(s) to Show"></img>
+    <div class="main-body">
+      <img src="" id="poster" width="400px" alt="No Poster(s) to Show"></img>
       <h2 id="movieName"></h2>
+      <div id="scoreBlock">
+        <h2 id="displayScore">0 / 10</h2>
+      </div>
       <p>Which Year the movie was released?</p>
+        <input type="text" id="inputAnswer" placeholder="Answer ex) 2017"/>
+        <button type="submit" id="submitBtn" onclick="submitAnswer()">Submit Answer</button>
     </div>
     <div class="footer">
       <div class="developer-info">

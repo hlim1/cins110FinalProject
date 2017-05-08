@@ -11,7 +11,7 @@ div.header {
   margin: 0 auto;
   background-color: #292924;
 }
-div#main-body {
+div.main-body {
   text-align: center;
   background-image: url("http://combiboilersleeds.com/images/movie/movie-3.jpg");
   color: white;
@@ -42,13 +42,17 @@ div.footer {
   margin-right: auto;
 }
 .main-body > .main-button {
+  margin: 10px;
   padding: 10px;
   padding-left: 30px;
   padding-right: 30px;
   border: solid;
 }
-.main-body > #main-button:hover {
-  background-color: ;
+.main-body > .main-button:visited {
+  color: white;
+  font-weight: bold;
+}
+.main-body > .main-button:hover {
   font-weight: bold;
 }
 .footer > .developer-info {

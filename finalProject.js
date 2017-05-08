@@ -1,5 +1,6 @@
 //HeuiChan Lim
 //Global Object holding
+var current = "";
 var titleHolder;
 var movieInfo = [
                   { "poster": "http://i2.wp.com/bitcast-a-sm.bitgravity.com/slashfilm/wp/wp-content/images/Ant-Man-Poster.jpg",
@@ -268,8 +269,32 @@ function viewResult() {
   console.log("working");
 }
 
-var current = "";
 function movieQuiz() {
+  var arraySize = movieInfo.length;
+  var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
+  var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
+  while (current == year)
+  {
+     rand = Math.floor(Math.random() * arraySize);
+  }
+  current = year;
+  document.getElementById("poster").src = movieInfo[rand].poster;
+  document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
+  setCookie("score", 0, 9999); // When the page is load, always initialise the score to 0. 
+}
+
+function submitAnswer() {
+  var submittedAnswer = document.getElementById("inputAnswer").value;
+  var currentScore = getCookie("score");
+
+  if (submittedAnswer == current)
+  {
+    currentScore++;
+    setCookie("score", currentScore, 9999);
+  }
+  document.getElementById("displayScore").innerHTML = currentScore + " / 10";
+  document.getElementById("inputAnswer").innerHTML = "";
+  // After answering each quiz, move on to the next quiz.
   var arraySize = movieInfo.length;
   var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
   var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
