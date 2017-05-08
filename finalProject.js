@@ -21,7 +21,7 @@ var movieInfo = [
                                 "actor3": "Kim Basinger" },
                     "releaseDate": "June 23, 1989",
                     "MoviePage": "http://www.boxofficemojo.com/movies/?id=batman.htm" },
-                  { "poster": "http://cdn1.sciencefiction.com/wp-content/uploads/2016/04/Captain-America-Civil-War-Key-Art.jpg",
+                  { "poster": "http://www.flickeringmyth.com/wp-content/uploads/2015/11/Captain-America-Civil-War-poster-1.jpg",
                     "movieTitle": "Captain America: Civil War",
                     "director": "Anthony Russo",
                     "actors":
@@ -46,7 +46,7 @@ var movieInfo = [
                               { "actor1": "Tom Cruise",
                                 "actor2": "Emily Blunt",
                                 "actor3": "Bill Paxton" },
-                    "releaseDate": "June 6, 2014",
+                    "releaseDate": "June 6, 2015",
                     "MoviePage": "http://www.boxofficemojo.com/movies/?id=allyouneediskill.htm" },
                   { "poster": "http://www.movieposter.com/posters/archive/main/202/MPW-101227",
                     "movieTitle": "Fantastic Four",
@@ -55,7 +55,7 @@ var movieInfo = [
                               { "actor1": "Ioan Gruffudd",
                                 "actor2": "Jessica Alba",
                                 "actor3": "Chris Evans" },
-                    "releaseDate": "July 8, 2005",
+                    "releaseDate": "July 8, 2015",
                     "MoviePage": "http://www.boxofficemojo.com/movies/?id=fantasticfour.htm" },
                   { "poster": "http://2.bp.blogspot.com/-8u0GaUZpPJ8/UL-kNvR80_I/AAAAAAAAJlQ/GMaYKjKtunA/s1600/gijoertltndmstcpstr.jpg",
                     "movieTitle": "G.I. Joe",
@@ -280,31 +280,57 @@ function movieQuiz() {
   current = year;
   document.getElementById("poster").src = movieInfo[rand].poster;
   document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
-  setCookie("score", 0, 9999); // When the page is load, always initialise the score to 0. 
+  setCookie("score", 0, 9999); // When the page is load, always initialise the score to 0.
+  // When the page is load, always initialise the sttempt to 10.
+  // Users have 3 attempts.
+  setCookie("attempt", 3, 9999);
+  // When loading a page, enable input and button to work. 
+  document.getElementById("inputAnswer").disabled = false; 
+  document.getElementById("submitBtn").disabled = false;
+  document.getElementById("inputAnswer").value = "";
 }
 
 function submitAnswer() {
-  var submittedAnswer = document.getElementById("inputAnswer").value;
-  var currentScore = getCookie("score");
+  var trial = getCookie("attempt");
+  if (trial > 1)
+  {
+    var submittedAnswer = document.getElementById("inputAnswer").value;
+    var currentScore = getCookie("score");
 
-  if (submittedAnswer == current)
-  {
-    currentScore++;
-    setCookie("score", currentScore, 9999);
+    if (submittedAnswer == current)
+    {
+      currentScore++;
+      setCookie("score", currentScore, 9999);
+    }
+    document.getElementById("displayScore").innerHTML = currentScore + " / 3";
+    document.getElementById("inputAnswer").value = "";
+    // After answering each quiz, move on to the next quiz.
+    var arraySize = movieInfo.length;
+    var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
+    var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
+    while (current == year)
+    {
+       rand = Math.floor(Math.random() * arraySize);
+    }
+    current = year;
+    document.getElementById("poster").src = movieInfo[rand].poster;
+    document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
   }
-  document.getElementById("displayScore").innerHTML = currentScore + " / 10";
-  document.getElementById("inputAnswer").innerHTML = "";
-  // After answering each quiz, move on to the next quiz.
-  var arraySize = movieInfo.length;
-  var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
-  var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
-  while (current == year)
+  else
   {
-     rand = Math.floor(Math.random() * arraySize);
+    document.getElementById("inputAnswer").disabled = true;
+    document.getElementById("submitBtn").disabled = true;
+    var toFinalPage = document.createElement("a"); // Create a new anchor attribute.
+    var text = document.createTextNode("To Final Page"); //Creating a text node to represent the link.
+    toFinalPage.appendChild(text); // Appending the text node to the anchor attribute.
+    toFinalPage.setAttribute("class", "main-button");
+    toFinalPage.setAttribute("href", "finalPage.html");
+    var mBody = document.getElementsByClassName("main-body");
+    mBody[0].appendChild(toFinalPage); // Append newly created anchor tag to main-body
   }
-  current = year;
-  document.getElementById("poster").src = movieInfo[rand].poster;
-  document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
+  trial--;
+  setCookie("attempt", trial, 9999);
+  console.log(trial);
 }
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp

@@ -35,6 +35,11 @@ div.footer {
   line-height: 80px;
   letter-spacing: 12px;
 }
+.header > .navigation {
+  top: 30px; 
+  right: 10px;
+  position: absolute;
+}
 .main-body > #main-page-img {
   display: block; 
   margin-top: 0;
