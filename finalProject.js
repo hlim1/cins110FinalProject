@@ -109,7 +109,7 @@ var movieInfo = [
                               { "actor1": "Ryan Gosling",
                                 "actor2": "Ryan Gosling",
                                 "actor3": "N/A" },
-                    "releaseDate": "December 9, 20016",
+                    "releaseDate": "December 9, 2016",
                     "moviePage": "http://www.boxofficemojo.com/movies/?id=lalaland.htm" },
                   { "poster": "http://www.freemovieposters.net/posters/madagascar_2005_1722_poster.jpg",
                     "movieTitle": "Madagascar",
@@ -183,7 +183,7 @@ var movieInfo = [
                                 "actor3": "Famke Janssen" },
                     "releaseDate": "January 30, 2009",
                     "moviePage": "http://www.boxofficemojo.com/movies/?id=taken.htm" },
-                  { "poster": "https://tse2.mm.bing.net/th?id=OIP.Br0pwOtq5iQTd9m9qv_FYADMEy&pid=15.1",
+                  { "poster": "http://www.freemovieposters.net/posters/up_2009_256_poster.jpg",
                     "movieTitle": "Up",
                     "director": "Peter Doctor",
                     "actors":
@@ -240,11 +240,11 @@ var movieInfo = [
                 ];
 
 function passMovie(mvTitle) {
-  setCookie("title", mvTitle, 9999);
+  setCookie("mvTitle", mvTitle, 9999);
 }
 
 function viewResult() {
-  var movie = getCookie("title");
+  var movie = getCookie("mvTitle");
   var i = 0;
   while (movie != movieInfo[i].movieTitle)
   {
@@ -326,7 +326,6 @@ function submitAnswer() {
   }
   trial--;
   setCookie("attempt", trial, 9999);
-  console.log(trial);
 }
 
 //courtesy of w3schools, from: http://www.w3schools.com/js/js_cookies.asp
