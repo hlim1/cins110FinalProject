@@ -1,6 +1,6 @@
 /*HeuiChan Lim*/
 
-/*Style for main structure: header, body, and footer*/
+/* Style for main structure: header, body, and footer */
 * { margin: 0; padding: 0; }
 a { text-decoration: none; }
 li { list-style: none; }
@@ -34,7 +34,7 @@ div.footer {
   position: relative;
 }
 
-/*Actual content styles*/
+/* Actual content styles */
 .header > .main-title {
   margin: 0;
   margin-left: 15px;
@@ -43,6 +43,7 @@ div.footer {
   line-height: 80px;
   letter-spacing: 12px;
 }
+/* Style for navigation bars */
 .header > .main-nav {
   position: absolute;
   right: 5px;
@@ -62,7 +63,7 @@ div.footer {
   font-size: 18px;
   border-radius: 10px 10px 10px 10px;
 }
-
+/*-------------------------*/
 .main-body > #main-page-img {
   display: block; 
   margin-top: 0;
