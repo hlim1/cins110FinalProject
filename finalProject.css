@@ -107,6 +107,24 @@ div.footer {
 .main-body > .info-section > a:visited {
   color: black;
 }
+.main-body > #good-bye {
+  position: absolute;
+  right: 150px;
+  bottom: 40px;
+}
+.main-body > #good-bye > h3 {
+  font-style: italic;
+}
+.main-body > #end-page-img {
+  top: 20px;
+  right: 330px;
+  position: relative;
+}
+.main-body > #trailer {
+  position: absolute;
+  right: 0;
+  top: 130px;
+}
 .footer > .developer-info {
   color: white;
   left: 40%;
