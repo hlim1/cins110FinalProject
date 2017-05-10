@@ -1,0 +1,45 @@
+/*HeuiChan Lim*/
+
+div#listPage-body {
+  background-image: url("http://combiboilersleeds.com/images/movie/movie-3.jpg");
+  color: white;
+  padding: 25px;
+  height: 400px;
+  position: relative;
+}
+div#listPage-body > table {
+  width: 100%;
+  margin-top: 0;
+  margin-left: auto;
+  margin-right: auto;
+  border-collapse: collapse;
+  position: relative;
+  top: 40px;
+}
+th, td {
+  text-align: center;
+  padding: 5px;
+  color: black;
+}
+td {
+  padding-bottom: 15px;
+}
+tr:nth-child(odd) {
+  background-color: #708090;
+}
+tr:nth-child(even) {
+  background-color: #C0C0C0;
+}
+#listPage-body > #searchSection {
+  right: 25px;
+  position: absolute;  
+}
+.title {
+  color: black; 
+}
+.title:visited {
+  color: black; 
+}
+.title:hover {
+  color: red; 
+}
