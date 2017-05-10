@@ -217,7 +217,7 @@ var movieInfo = [
                               { "actor1": "Hugh Jackman",
                                 "actor2": "Patrick Stewart",
                                 "actor3": "Ian McKellen" },
-                    "releaseDate": "July 14,2000",
+                    "releaseDate": "July 14, 2000",
                     "moviePage": "http://www.boxofficemojo.com/movies/?id=xmen.htm" },
                   { "poster": "http://www.movieposter.com/posters/archive/main/88/MPW-44048",
                     "movieTitle": "Yes Man",
