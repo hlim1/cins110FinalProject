@@ -238,11 +238,41 @@ var movieInfo = [
                     "releaseDate": "March 4, 2016",
                     "moviePage": "http://www.boxofficemojo.com/movies/?id=disney2016.htm" }
                 ];
-
+// Function used in listPage.html
+// Function that receives the title of selected movie as a parameter,
+// then saves it in a cookie to be used in the view.html page
 function passMovie(mvTitle) {
   setCookie("mvTitle", mvTitle, 9999);
 }
 
+// Function used in listPage.html
+// Gets the search value from the user input, then search through the list
+// If the target was found, direct the page to the view page
+// Else, give out the alert event to the user
+function movieSearch() {
+  var searchValue = document.getElementById("search").value;
+  var i = 0;
+  for (; i < movieInfo.length; i++)
+  {
+    if (searchValue == movieInfo[i].movieTitle)
+      break;
+  }
+  if (i < movieInfo.length && searchValue == movieInfo[i].movieTitle)
+  {
+    passMovie(searchValue);
+    // Open the view page
+    window.open("view.html", "_self", false);
+    viewResult();
+  }
+  else
+  {
+    alert("Sorry! We don't have what you are looking for.");
+  }
+}
+
+// Function used in view.html
+// Function that retrieves movie title from the saved cookie and search through the JSON movie object list
+// Once the movie information is found, display the information on the page
 function viewResult() {
   var movie = getCookie("mvTitle");
   var i = 0;
@@ -265,9 +295,15 @@ function viewResult() {
   movieSrcPage.innerHTML = "Go to Box office mojo: " + movieInfo[i].movieTitle;
 }
 
+// Function used in quiz.html
+// Randomly generates the number between 0 and movieInfo size,
+// then displays the poster for the user to answer the quiz
+// User gets x number of attempts, so initialise the attempts in a cookie 
 function movieQuiz() {
   var arraySize = movieInfo.length;
-  var rand = Math.floor(Math.random() * arraySize); // Generates random number between 0 and arraysize.
+  // Generates random number between 0 and arraysize.
+  var rand = Math.floor(Math.random() * arraySize); 
+  // Take only the last 4 of the string with substr function and save it into the year variable.
   var year = movieInfo[rand].releaseDate.substr(movieInfo[rand].releaseDate.length - 4);
   while (current == year)
   {
@@ -283,11 +319,18 @@ function movieQuiz() {
   // When loading a page, enable input and button to work. 
   document.getElementById("inputAnswer").disabled = false; 
   document.getElementById("submitBtn").disabled = false;
+  // When loading a page, empty the input area.
   document.getElementById("inputAnswer").value = "";
 }
 
+// Function used in quiz.html
+// When the user submits the answer, check for the correctness and if the user's answer is correct,
+// then increase the current score and update the score on the page
+// Either the user got the answer right or wrong, decrement the attempts
+// When the user uses all attempts, 0, then disable the input and submit button and show the link to the final page
 function submitAnswer() {
   var trial = getCookie("attempt");
+  // If the user is still has remaining attempts
   if (trial > 1)
   {
     var submittedAnswer = document.getElementById("inputAnswer").value;
@@ -312,6 +355,7 @@ function submitAnswer() {
     document.getElementById("poster").src = movieInfo[rand].poster;
     document.getElementById("movieName").innerHTML = movieInfo[rand].movieTitle;
   }
+  // else, finish the quiz
   else
   {
     document.getElementById("inputAnswer").disabled = true;
@@ -319,9 +363,8 @@ function submitAnswer() {
     var toFinalPage = document.createElement("a"); // Create a new anchor attribute.
     var text = document.createTextNode("To Final Page"); //Creating a text node to represent the link.
     toFinalPage.appendChild(text); // Appending the text node to the anchor attribute.
-    toFinalPage.setAttribute("class", "main-button");
     toFinalPage.setAttribute("href", "finalPage.html");
-    var mBody = document.getElementsByClassName("main-body");
+    var mBody = document.getElementsByClassName("info-section");
     mBody[0].appendChild(toFinalPage); // Append newly created anchor tag to main-body
   }
   trial--;

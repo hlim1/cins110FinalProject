@@ -2,8 +2,11 @@
 
 /* Style for main structure: header, body, and footer */
 * { margin: 0; padding: 0; }
-a { text-decoration: none; }
 li { list-style: none; }
+a {
+  color: white;
+  text-decoration: none;
+}
 a:visited {
   color: white;
 }
@@ -83,6 +86,26 @@ div.footer {
 }
 .main-body > .main-button:hover {
   font-weight: bold;
+}
+.main-body > .info-section {
+  position: absolute;
+  top: 280px;
+  right: 50px;
+  color: black;  
+}
+.main-body > .info-section > a {
+  color: black;
+  margin: 10px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border: solid black;
+}
+.main-body > .info-section > a:hover {
+  color: red;
+}
+.main-body > .info-section > a:visited {
+  color: black;
 }
 .footer > .developer-info {
   color: white;
